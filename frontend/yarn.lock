@@ -259,6 +259,13 @@
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
 
+"@chakra-ui/icons@^2.1.0":
+  "integrity" "sha512-pGFxFfQ/P5VnSRnTzK8zGAJxoxkxpHo/Br9ohRZdOpuhnIHSW7va0P53UoycEO5/vNJ/7BN0oDY0k9qurChcew=="
+  "resolved" "https://registry.npmjs.org/@chakra-ui/icons/-/icons-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "@chakra-ui/icon" "3.1.0"
+
 "@chakra-ui/image@2.1.0":
   "integrity" "sha512-bskumBYKLiLMySIWDGcz0+D9Th0jPvmX6xnRMs4o92tT3Od/bW26lahmV2a2Op2ItXeCmRMY+XxJH5Gy1i46VA=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/image/-/image-2.1.0.tgz"
@@ -345,6 +352,13 @@
     "@chakra-ui/transition" "2.1.0"
     "aria-hidden" "^1.2.2"
     "react-remove-scroll" "^2.5.5"
+
+"@chakra-ui/next-js@^2.1.5":
+  "integrity" "sha512-bBd8zeXlAuVwDsjGN0/5ZZJknSbFeiZgJiGdbJo91v2lxKkOwo26b4ggc1ck1t+JR+daU6SrGBjlbQqSuWzyaA=="
+  "resolved" "https://registry.npmjs.org/@chakra-ui/next-js/-/next-js-2.1.5.tgz"
+  "version" "2.1.5"
+  dependencies:
+    "@emotion/cache" "^11.11.0"
 
 "@chakra-ui/number-input@2.1.0":
   "integrity" "sha512-/gEAzQHhrMA+1rzyCMaN8OkKtUPuER6iA+nloYEYBoT7dH/EoNlRtBkiIQhDp+E4VpgZJ0SK3OVrm9/eBbtHHg=="
@@ -592,7 +606,7 @@
   dependencies:
     "@chakra-ui/utils" "2.0.15"
 
-"@chakra-ui/react@^2.8.0":
+"@chakra-ui/react@^2.8.0", "@chakra-ui/react@>=2.4.0":
   "integrity" "sha512-tV82DaqE4fMbLIWq58BYh4Ol3gAlNEn+qYOzx8bPrZudboEDnboq8aVfSBwWOY++MLWz2Nn7CkT69YRm91e5sg=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/react/-/react-2.8.0.tgz"
   "version" "2.8.0"
@@ -924,7 +938,7 @@
   "resolved" "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
   "version" "0.7.4"
 
-"@emotion/react@^11.0.0", "@emotion/react@^11.0.0-rc.0", "@emotion/react@^11.11.1", "@emotion/react@>=10.0.35":
+"@emotion/react@^11.0.0", "@emotion/react@^11.0.0-rc.0", "@emotion/react@^11.11.1", "@emotion/react@>=10.0.35", "@emotion/react@>=11":
   "integrity" "sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA=="
   "resolved" "https://registry.npmjs.org/@emotion/react/-/react-11.11.1.tgz"
   "version" "11.11.1"
@@ -2969,7 +2983,7 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next@13.4.12":
+"next@>=13", "next@13.4.12":
   "integrity" "sha512-eHfnru9x6NRmTMcjQp6Nz0J4XH9OubmzOa7CkWL+AUrUxpibub3vWwttjduu9No16dug1kq04hiUUpo7J3m3Xw=="
   "resolved" "https://registry.npmjs.org/next/-/next-13.4.12.tgz"
   "version" "13.4.12"
