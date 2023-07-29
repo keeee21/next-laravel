@@ -10,50 +10,34 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Link,
   Stack,
   chakra,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import axios from "axios";
-
-import { ChangeEvent, useState } from "react";
+import NextLink from "next/link";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-const CFaUserAlt = chakra(FaUserAlt);
-const CFaLock = chakra(FaLock);
-
-type LoginParams = {
-  email: string;
-  password: string;
-};
+import { useRouter } from "next/navigation";
+import { ROUTER_PATH } from "./routes/index";
+import { useLogin } from "./hooks/useLogin";
+import { useInput } from "./hooks/useInput";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const CFaUserAlt = chakra(FaUserAlt);
+  const CFaLock = chakra(FaLock);
 
-  const handleShowClick = () => setShowPassword(!showPassword);
+  const { value: email, onChange: changeEmail } = useInput("");
+  const { value: password, onChange: changePassword } = useInput("");
+  const { showPassword, handleShowClick, handleLogin } = useLogin();
 
-  const changeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const changePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleLogin = () => {
-    const loginParams: LoginParams = {
-      email,
-      password,
-    };
-
-    axios.get("http://localhost:8083/sanctum/csrf-cookie", { withCredentials: true }).then((response) => {
-      console.log("sunctom");
-      axios.post("http://localhost:8083/login", loginParams, { withCredentials: true }).then((response) => {
-        console.log("ログインできた");
-        console.log(response.data);
-      });
-    });
+  const onSubmit = async () => {
+    try {
+      await handleLogin({ email, password });
+      router.push(ROUTER_PATH.DASHBOARD);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -65,17 +49,17 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
     >
-      <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
+      <VStack flexDir="column" mb="2">
         <Heading color="teal.400">X Clone</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
-            <FormControl>
+            <FormControl isRequired>
               <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<CFaUserAlt color="gray.300"></CFaUserAlt>} />
                 <Input id="email" type="email" placeholder="email address" onChange={changeEmail} />
               </InputGroup>
             </FormControl>
-            <FormControl>
+            <FormControl isRequired>
               <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<CFaLock color="gray.300"></CFaLock>} />
                 <Input
@@ -91,24 +75,19 @@ export default function Home() {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-            <Button
-              borderRadius={0}
-              type="submit"
-              variant="solid"
-              colorScheme="teal"
-              width="full"
-              onClick={handleLogin}
-            >
+            <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full" onClick={onSubmit}>
               Login
             </Button>
           </Stack>
         </Box>
-      </Stack>
+      </VStack>
       <Box>
         New to us?{" "}
-        <Link color="teal.500" href="#">
-          Sign Up
-        </Link>
+        <NextLink href={`${ROUTER_PATH.REGISTER}`}>
+          <Text color="teal.500" display="inline">
+            Sign Up
+          </Text>
+        </NextLink>
       </Box>
     </Flex>
   );
