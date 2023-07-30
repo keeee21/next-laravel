@@ -16,7 +16,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { ROUTER_PATH } from "./routes/index";
 import { useLogin } from "./hooks/useLogin";
@@ -24,7 +25,7 @@ import { useInput } from "./hooks/useInput";
 
 export default function Home() {
   const router = useRouter();
-  const CFaUserAlt = chakra(FaUserAlt);
+  const CAiOutlineMail = chakra(AiOutlineMail);
   const CFaLock = chakra(FaLock);
 
   const { value: email, onChange: changeEmail } = useInput("");
@@ -55,7 +56,7 @@ export default function Home() {
           <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
             <FormControl isRequired>
               <InputGroup>
-                <InputLeftElement pointerEvents="none" children={<CFaUserAlt color="gray.300"></CFaUserAlt>} />
+                <InputLeftElement pointerEvents="none" children={<CAiOutlineMail color="gray.300"></CAiOutlineMail>} />
                 <Input id="email" type="email" placeholder="email address" onChange={changeEmail} />
               </InputGroup>
             </FormControl>
