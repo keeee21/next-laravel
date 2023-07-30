@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->comment('ユーザーid');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->text('tweet', 140)->comment('ツイート内容');
             $table->timestamps();
         });
