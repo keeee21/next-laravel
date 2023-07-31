@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useInput } from "../hooks/useInput";
 import { getAllTweets, postTweet } from "../api/apiService";
 import { Tweet } from "../types/tweet";
+import { Header } from "../components/Header";
 
 export default function Dashboard() {
   const [reloadTweets, setReloadTweets] = useState(false);
@@ -41,6 +42,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <Header />
       <Box maxW="xl" mx="auto" mt="10" bgColor="teal.100">
         <Heading mb="6">X Clone</Heading>
         {error && (
