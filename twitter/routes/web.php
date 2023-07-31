@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
+});
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', [TweetController::class, 'dashboard'])->name('dashboard');
+    Route::get('/tweets', [TweetController::class, 'index'])->name('index');
+    Route::post('postTweet', [TweetController::class, 'store'])->name('store');
 });
 
 require __DIR__.'/auth.php';
